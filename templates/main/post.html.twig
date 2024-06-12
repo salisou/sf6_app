@@ -22,4 +22,32 @@
 		{{ form.vars.data.id is null ? 'Save Post': 'Update Post '}}
 	</button>
 
-</div>{% endblock %}
+</div>{% endblock %}<!--
+		
+		Spiegazione del codice:
+		Estensione del template:
+		
+		{% extends 'base.html.twig' %}: Estende il template base.html.twig, che di solito contiene la struttura HTML di base.
+		Blocco body:
+		
+		{% block body %} ... {% endblock %}: Definisce il contenuto del blocco body, che sarà inserito nel layout di base.
+		Inizio del form:
+		
+		{{ form_start(form) }}: Genera il tag di apertura del form e gestisce la configurazione del form.
+		Titolo del form:
+		
+		{{ form.vars.data.id is null ? 'Create Post' : 'Update Post ' }}: Visualizza 'Create Post' se l'ID del post è null (indicando che è un nuovo post), altrimenti visualizza 'Update Post' (indicando che si sta modificando un post esistente).
+		Campo titolo del post:
+		
+		{{ form_label(form.title) }}: Visualizza l'etichetta del campo title.
+		{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}: Visualizza il widget del campo title con la classe CSS form-control.
+		Campo contenuto del post:
+		
+		{{ form_label(form.content) }}: Visualizza l'etichetta del campo content.
+		{{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}: Visualizza il widget del campo content con la classe CSS form-control.
+		Pulsante di submit:
+		
+		<button type="submit" class="btn btn-primary mt-2">: Crea un pulsante di submit con le classi CSS btn btn-primary mt-2.
+		{{ form.vars.data.id is null ? 'Save Post' : 'Update Post ' }}: Il testo del pulsante sarà 'Save Post' se l'ID del post è null (indicando che è un nuovo post), altrimenti sarà 'Update Post'.
+		
+		-->
