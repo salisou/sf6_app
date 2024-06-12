@@ -1,28 +1,4 @@
-{% extends 'base.html.twig' %}
-
-
-{% block body %}
-	<div class="mt-4">
-		{{ form_start(form) }}
-		<h3>
-			{{ form.vars.data.id is null ? 'Create Post': 'Update Post '}}
-		</h3>
-
-		<div class="form-group">
-			{{ form_label(form.title) }}
-			{{ form_widget(form.title, {'attr':{'class':'form-control'}}) }}
-		</div>
-
-		<div class="form-group">
-			{{ form_label(form.content) }}
-			{{ form_widget(form.content, {'attr':{'class':'form-control'}}) }}
-		</div>
-	</br>
-	<button type="submit" class="btn btn-primary mt-2">
-		{{ form.vars.data.id is null ? 'Save Post': 'Update Post '}}
-	</button>
-
-</div>{% endblock %}<!--
+<!--
 		
 		Spiegazione del codice:
 		Estensione del template:
@@ -50,4 +26,39 @@
 		<button type="submit" class="btn btn-primary mt-2">: Crea un pulsante di submit con le classi CSS btn btn-primary mt-2.
 		{{ form.vars.data.id is null ? 'Save Post' : 'Update Post ' }}: Il testo del pulsante sarà 'Save Post' se l'ID del post è null (indicando che è un nuovo post), altrimenti sarà 'Update Post'.
 		
-		-->
+-->
+
+{# Estende il template base.html.twig #}
+{% extends 'base.html.twig' %}
+
+{# Definisce il blocco body #}
+{% block body %}
+    <div class="mt-4">
+        {# Inizia il form #}
+        {{ form_start(form) }}
+        
+        {# Mostra il titolo del form, 'Create Post' se il post è nuovo, 'Update Post' se si sta modificando un post esistente #}
+        <h3>
+            {{ form.vars.data.id is null ? 'Create Post' : 'Update Post ' }}
+        </h3>
+
+        {# Campo per il titolo del post #}
+        <div class="form-group">
+            {{ form_label(form.title) }} {# Etichetta del campo title #}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }} {# Widget del campo title con la classe CSS 'form-control' #}
+        </div>
+
+        {# Campo per il contenuto del post #}
+        <div class="form-group">
+            {{ form_label(form.content) }} {# Etichetta del campo content #}
+            {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }} {# Widget del campo content con la classe CSS 'form-control' #}
+        </div>
+
+        </br>
+        
+        {# Pulsante di submit, 'Save Post' se il post è nuovo, 'Update Post' se si sta modificando un post esistente #}
+        <button type="submit" class="btn btn-primary mt-2">
+            {{ form.vars.data.id is null ? 'Save Post' : 'Update Post ' }}
+        </button>
+    </div>
+{% endblock %}
